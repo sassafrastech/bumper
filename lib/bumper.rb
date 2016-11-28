@@ -29,15 +29,15 @@ def write_version(version)
 end
 
 def commit_and_merge(version)
-  exec("git commit -a -m 'Bumped version to #{version}'")
-  exec("git tag -a v#{version} -m v#{version}")
-  exec("git push --tags")
+  system("git commit -a -m 'Bumped version to #{version}'")
+  system("git tag -a v#{version} -m v#{version}")
+  system("git push --tags")
 end
 
 def do_deploy(env)
   branch = env == "production" ? "master" : env
-  exec("git checkout #{branch}")
-  exec("git merge develop")
-  exec("git push")
-  exec("cap #{env} deploy")
+  system("git checkout #{branch}")
+  system("git merge develop")
+  system("git push")
+  system("cap #{env} deploy")
 end

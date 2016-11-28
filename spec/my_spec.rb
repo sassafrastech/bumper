@@ -1,5 +1,5 @@
 require "rspec"
-require "./lib/bumper"
+require_relative "../lib/bumper"
 
 RSpec.describe "bumper" do
   describe "increment" do
