@@ -31,7 +31,7 @@ end
 def commit_and_merge(version)
   system("git commit -a -m 'Bumped version to #{version}'")
   system("git tag -a v#{version} -m v#{version}")
-  system("git push --tags")
+  system("git push && git push --tags")
 end
 
 def do_deploy(env)
