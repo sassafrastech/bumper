@@ -39,5 +39,9 @@ def do_deploy(env)
   system("git checkout #{branch}")
   system("git merge develop")
   system("git push")
-  system("cap #{env} deploy")
+  system("cap #{env} deploy#{capistrano_version == 2 ? ":migrations" : ""}")
+end
+
+def capistrano_version
+  `cap --version`.match(/v(\d+)/)[1].to_i
 end
