@@ -11,7 +11,7 @@ def do_increment(inctype_or_version)
 end
 
 def current_version
-  File.read("VERSION")
+  File.read("VERSION").gsub(/\Av/, "") # Remove leading 'v' if present
 end
 
 def increment(version, type)
