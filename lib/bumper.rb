@@ -43,5 +43,6 @@ def do_deploy(env)
 end
 
 def capistrano_version
-  `cap --version`.match(/v(\d+)/)[1].to_i
+  matches = `cap --version`.match(/v(\d+)/)
+  matches.nil? ? nil : matches[1].to_i
 end
